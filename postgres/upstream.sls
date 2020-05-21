@@ -18,10 +18,11 @@ postgresql-profile:
         bin_dir: {{ postgres.bin_dir }}
     {%- endif %}
 # Add upstream repository for your distro
+    {%- if not postgres.use_local_mirror %}
 postgresql-repo:
   pkgrepo.managed:
     {{- format_kwargs(postgres.pkg_repo) }}
-
+    {%- endif %}
   {%- else -%}
 
 # Remove the repo configuration (and GnuPG key) as requested
