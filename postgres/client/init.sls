@@ -16,7 +16,7 @@ include:
 postgresql-client-libs:
   pkg.installed:
     - pkgs: {{ pkgs | json }}
-  {%- if postgres.use_upstream_repo == true %}
+  {%- if postgres.use_upstream_repo == true and postgres.use_local_mirror == false %}
     - refresh: True
     - require:
       - pkgrepo: postgresql-repo
